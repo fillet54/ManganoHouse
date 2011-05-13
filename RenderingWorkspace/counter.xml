@@ -1,0 +1,592 @@
+<Root Label="Default Kernel" Name="" Type="Kernel">
+<Object Identifier="./Modellers/XML Modeller" Label="XML Modeller" Name="XML Modeller" Type="Modeller">
+</Object>
+<Object Identifier="./Ray Tracers/Standard Ray Tracer" Label="Standard Ray Tracer" Name="Standard Ray Tracer" Type="Ray Tracer">
+	<Parameter Name="Rasterization" Type="String" Value="Auto"/>
+	<Parameter Name="Antialiasing" Type="String" Value="Production AA"/>
+	<Parameter Name="Antialiasing Filter" Type="String" Value="Mitchell-Netravali 0.5 0.8"/>
+	<Parameter Name="Antialiasing Threshold" Type="Real" Value="0.3"/>
+	<Parameter Name="Texture Filtering" Type="Boolean" Value="1"/>
+	<Parameter Name="Brightness Threshold" Type="Real" Value="0.001"/>
+	<Parameter Name="Max Ray Tracing Depth" Type="Integer" Value="5"/>
+	<Parameter Name="Irradiance Scale" Type="RGB" Value="1 1 1"/>
+	<Parameter Name="Linear Lightflow" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Diffuse Samples" Type="Integer" Value="64"/>
+	<Parameter Name="./Sampling Criteria/Specular Samples" Type="Integer" Value="8"/>
+	<Parameter Name="./Sampling Criteria/Dispersion Samples" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Trace Diffusers" Type="Boolean" Value="0"/>
+	<Parameter Name="./Sampling Criteria/Trace Translucencies" Type="Boolean" Value="0"/>
+	<Parameter Name="./Sampling Criteria/Trace Fuzzy Reflections" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Trace Fuzzy Refractions" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Trace Reflections" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Trace Refractions" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Random Generator" Type="String" Value="Pure"/>
+</Object>
+<Object Identifier="./Irradiance Estimators/Diffuse Interreflection" Label="Diffuse Interreflection" Name="Diffuse Interreflection" Type="Irradiance Estimator">
+	<Parameter Name="Enabled" Type="Boolean" Value="1"/>
+	<Parameter Name="Max Recursion Depth" Type="Integer" Value="1"/>
+	<Parameter Name="Max Ray Tracing Depth" Type="Integer" Value="5"/>
+	<Parameter Name="Final Gathering Rays" Type="Integer" Value="500"/>
+	<Parameter Name="Light Sampling" Type="Boolean" Value="1"/>
+	<Parameter Name="Ambient Lighting" Type="Boolean" Value="0"/>
+	<Parameter Name="Accuracy" Type="Real" Value="0.25"/>
+	<Parameter Name="Minimum Pixel Reuse" Type="Real" Value="2.5"/>
+	<Parameter Name="Maximum Pixel Reuse" Type="Real" Value="0"/>
+	<Parameter Name="Radiance Limit" Type="Real" Value="0.3"/>
+	<Parameter Name="Secondary Estimator" Type="String" Value="Density Estimation"/>
+</Object>
+<Object Identifier="./Irradiance Estimators/Density Estimation" Label="Density Estimation" Name="Density Estimation" Type="Irradiance Estimator">
+	<Parameter Name="Enabled" Type="Boolean" Value="1"/>
+	<Parameter Name="Direct Lighting" Type="Boolean" Value="1"/>
+	<Parameter Name="Max Photon Tracing Depth" Type="Integer" Value="6"/>
+	<Parameter Name="Terminating Brightness" Type="Real" Value="0.01"/>
+	<Parameter Name="Samples per Light" Type="Integer" Value="100000"/>
+	<Parameter Name="Sample Sky" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Diffuse Samples" Type="Integer" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Specular Samples" Type="Integer" Value="0"/>
+	<Parameter Name="./Sampling Criteria/Dispersion Samples" Type="Boolean" Value="0"/>
+	<Parameter Name="./Sampling Criteria/Trace Reflections" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Trace Refractions" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Importance Sampling" Type="Boolean" Value="1"/>
+	<Parameter Name="./Sampling Criteria/Russian Roulette" Type="Boolean" Value="0"/>
+</Object>
+<Object Identifier="./Direct Light Estimators/Refraction Enhanced" Label="Refraction Enhanced" Name="Refraction Enhanced" Type="Direct Light Estimator">
+	<Parameter Name="Enabled" Type="Boolean" Value="1"/>
+	<Parameter Name="PseudoCaustics" Type="Boolean" Value="0"/>
+	<Parameter Name="Antialiasing" Type="String" Value="Low"/>
+	<Parameter Name="Optimized Area Lights" Type="Boolean" Value="1"/>
+</Object>
+<Object Identifier="./Environments/Octree Environment" Label="Octree Environment" Name="Octree Environment" Type="Environment">
+	<Parameter Name="Max Objects per Cell" Type="Integer" Value="20"/>
+</Object>
+<Object Identifier="./Filters/Simple Tone Mapping" Label="Simple Tone Mapping" Name="" Type="Filter">
+	<Parameter Name="Enabled" Type="Boolean" Value="1"/>
+	<Parameter Name="Method" Type="String" Value="Simple"/>
+	<Parameter Name="Exposure" Type="Real" Value="1"/>
+	<Parameter Name="Gamma Correction" Type="Real" Value="2.2"/>
+</Object>
+<Object Identifier="./Scenes/counter" Label="Default Scene" Name="counter" Type="Scene">
+<Object Identifier="Default Global Settings" Label="Default Global Settings" Name="" Type="Global Settings">
+	<Parameter Name="Ambient Light" Type="RGB" Value="0 0 0"/>
+	<Parameter Name="Background Color" Type="RGB" Value="0 0 0"/>
+	<Parameter Name="Compute Volume Transfer" Type="Boolean" Value="0"/>
+	<Parameter Name="Transfer Recursion Depth" Type="Integer" Value="1"/>
+	<Parameter Name="Background Type" Type="String" Value="Physical Sky"/>
+	<Parameter Name="Sky Intensity" Type="Real" Value="1"/>
+	<Parameter Name="Sky Frame" Type="Transform" Value="1.0000 0.0000 0 0 0.0000 1.0000 0 0 0.0000 0.0000 1 0"/>
+	<Parameter Name="Sun Direction" Type="String" Value="-0.6316 -0.6832 0.3664"/>
+	<Parameter Name="Sky Turbidity" Type="Real" Value="2"/>
+	<Parameter Name="./Location/Latitude" Type="Real" Value="40.0170"/>
+	<Parameter Name="./Location/Longitude" Type="Real" Value="-105.2830"/>
+	<Parameter Name="./Location/Timezone" Type="Integer" Value="-8"/>
+	<Parameter Name="./Location/Date" Type="String" Value="7/10/2011"/>
+	<Parameter Name="./Location/Time" Type="String" Value="13:30:0"/>
+</Object>
+<Object Identifier="./Models/Front Face" Label="Default Model" Name="Front Face" Type="Model">
+	<Object Identifier="Triangular Mesh" Label="Triangular Mesh" Name="" Type="Surface">
+	<Parameter Name="Vertex List" Type="Point3D List" Value="4">
+	<P xyz="4.3999 4.2849 0.8529"/>
+	<P xyz="4.1284 4.6361 0.8700"/>
+	<P xyz="4.1284 4.2849 0.8529"/>
+	<P xyz="4.3999 4.6361 0.8700"/>
+	</Parameter>
+	<Parameter Name="Normal List" Type="Point3D List" Value="4">
+	<P xyz="-0.00000000 -0.04866465 0.99881517"/>
+	<P xyz="-0.00000000 -0.04866465 0.99881517"/>
+	<P xyz="-0.00000000 -0.04866465 0.99881517"/>
+	<P xyz="-0.00000000 -0.04866465 0.99881517"/>
+	</Parameter>
+	<Parameter Name="Index List" Type="Triangle Index List" Value="2">
+	<F ijk="0 1 2"/>
+	<F ijk="1 0 3"/>
+	</Parameter>
+	<Parameter Name="Smooth" Type="Boolean" Value="1"/>
+	<Parameter Name="AA Tolerance" Type="Real" Value="15"/>
+	</Object>
+<Object Identifier="Whitted Material" Label="Whitted Material" Name="" Type="Material">
+	<Object Identifier="./Diffuse/Constant Texture" Label="Constant Texture" Name="" Type="Texture">
+		<Parameter Name="Color" Type="RGB" Value="1.0 1.0 1.0"/>
+</Object>
+	<Parameter Name="Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Transmitted Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Index of Refraction" Type="Real" Value="2"/>
+	<Parameter Name="Specular Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Transmitted Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Specular Attenuation" Type="String" Value="Fresnel"/>
+	<Parameter Name="Transmitted Attenuation" Type="String" Value="Fresnel"/>
+	</Object>
+	<Parameter Name="Map Channel" Type="Point2D List" Value="4">
+	<P xy="173.2243 -169.1308"/>
+	<P xy="162.5337 -182.9748"/>
+	<P xy="162.5337 -169.1308"/>
+	<P xy="173.2243 -182.9748"/>
+	</Parameter>
+	<Parameter Name="Frame" Type="Transform" Value="1 0 0 0 0 1 0 0 0 0 1 0"/>
+	<Parameter Name="Visible" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Caster" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Receiver" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Transmitter" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Receiver" Type="Boolean" Value="1"/>
+</Object>
+<Object Identifier="./Models/TileBar" Label="Default Model" Name="TileBar" Type="Model">
+	<Object Identifier="Triangular Mesh" Label="Triangular Mesh" Name="" Type="Surface">
+	<Parameter Name="Vertex List" Type="Point3D List" Value="22">
+	<P xyz="6.4706 6.4231 1.2089"/>
+	<P xyz="6.4706 4.2099 1.1581"/>
+	<P xyz="6.4706 4.2099 1.2089"/>
+	<P xyz="6.4706 6.4231 1.1581"/>
+	<P xyz="5.8794 6.7894 1.2089"/>
+	<P xyz="5.8794 6.4231 1.1581"/>
+	<P xyz="5.8794 6.4231 1.2089"/>
+	<P xyz="5.8794 6.7894 1.1581"/>
+	<P xyz="6.7873 6.7894 1.1581"/>
+	<P xyz="5.8794 6.4231 1.1581"/>
+	<P xyz="5.8794 6.7894 1.1581"/>
+	<P xyz="6.4706 6.4231 1.1581"/>
+	<P xyz="6.4706 4.2099 1.1581"/>
+	<P xyz="6.7873 4.2099 1.1581"/>
+	<P xyz="6.4706 6.4231 1.2089"/>
+	<P xyz="5.8794 6.4231 1.1581"/>
+	<P xyz="6.4706 6.4231 1.1581"/>
+	<P xyz="5.8794 6.4231 1.2089"/>
+	<P xyz="6.7873 4.2099 1.2089"/>
+	<P xyz="6.4706 4.2099 1.1581"/>
+	<P xyz="6.7873 4.2099 1.1581"/>
+	<P xyz="6.4706 4.2099 1.2089"/>
+	</Parameter>
+	<Parameter Name="Normal List" Type="Point3D List" Value="22">
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="-0.00000000 -1.00000000 -0.00000000"/>
+	<P xyz="-0.00000000 -1.00000000 -0.00000000"/>
+	<P xyz="-0.00000000 -1.00000000 -0.00000000"/>
+	<P xyz="-0.00000000 -1.00000000 -0.00000000"/>
+	</Parameter>
+	<Parameter Name="Index List" Type="Triangle Index List" Value="12">
+	<F ijk="0 1 2"/>
+	<F ijk="1 0 3"/>
+	<F ijk="4 5 6"/>
+	<F ijk="5 4 7"/>
+	<F ijk="8 9 10"/>
+	<F ijk="9 8 11"/>
+	<F ijk="11 8 12"/>
+	<F ijk="12 8 13"/>
+	<F ijk="14 15 16"/>
+	<F ijk="15 14 17"/>
+	<F ijk="18 19 20"/>
+	<F ijk="19 18 21"/>
+	</Parameter>
+	<Parameter Name="Smooth" Type="Boolean" Value="1"/>
+	<Parameter Name="AA Tolerance" Type="Real" Value="15"/>
+	</Object>
+<Object Identifier="Whitted Material" Label="Whitted Material" Name="" Type="Material">
+	<Object Identifier="./Diffuse/Constant Texture" Label="Constant Texture" Name="" Type="Texture">
+		<Parameter Name="Color" Type="RGB" Value="1.0 0.941176470588235 0.858823529411765"/>
+</Object>
+	<Parameter Name="Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Transmitted Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Index of Refraction" Type="Real" Value="2"/>
+	<Parameter Name="Specular Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Transmitted Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Specular Attenuation" Type="String" Value="Fresnel"/>
+	<Parameter Name="Transmitted Attenuation" Type="String" Value="Fresnel"/>
+	</Object>
+	<Parameter Name="Map Channel" Type="Point2D List" Value="22">
+	<P xy="-87.1350 -1.0000"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="0.0000 -1.0000"/>
+	<P xy="-87.1350 1.0000"/>
+	<P xy="-101.5557 -1.0000"/>
+	<P xy="-87.1350 1.0000"/>
+	<P xy="-87.1350 -1.0000"/>
+	<P xy="-101.5557 1.0000"/>
+	<P xy="-35.7451 -100.5557"/>
+	<P xy="0.0000 -86.1350"/>
+	<P xy="0.0000 -100.5557"/>
+	<P xy="-23.2740 -86.1350"/>
+	<P xy="-23.2740 1.0000"/>
+	<P xy="-35.7451 1.0000"/>
+	<P xy="23.2740 -1.0000"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="23.2740 1.0000"/>
+	<P xy="0.0000 -1.0000"/>
+	<P xy="35.7451 -1.0000"/>
+	<P xy="23.2740 1.0000"/>
+	<P xy="35.7451 1.0000"/>
+	<P xy="23.2740 -1.0000"/>
+	</Parameter>
+	<Parameter Name="Frame" Type="Transform" Value="1 0 0 0 0 1 0 0 0 0 1 0"/>
+	<Parameter Name="Visible" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Caster" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Receiver" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Transmitter" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Receiver" Type="Boolean" Value="1"/>
+</Object>
+<Object Identifier="./Models/Green Marble Tiles - Tile Mask" Label="Default Model" Name="Green Marble Tiles - Tile Mask" Type="Model">
+	<Object Identifier="Triangular Mesh" Label="Triangular Mesh" Name="" Type="Surface">
+	<Parameter Name="Vertex List" Type="Point3D List" Value="74">
+	<P xyz="5.3076 4.8141 0.9216"/>
+	<P xyz="5.3076 4.2069 0.8700"/>
+	<P xyz="5.3076 4.2069 0.9216"/>
+	<P xyz="5.3076 4.8141 0.8700"/>
+	<P xyz="6.4912 4.2069 0.9216"/>
+	<P xyz="5.3076 4.2069 0.8700"/>
+	<P xyz="6.4912 4.2069 0.8700"/>
+	<P xyz="5.3076 4.2069 0.9216"/>
+	<P xyz="5.3076 4.8141 0.9216"/>
+	<P xyz="5.9004 4.8141 0.8700"/>
+	<P xyz="5.3076 4.8141 0.8700"/>
+	<P xyz="5.9004 4.8141 0.9216"/>
+	<P xyz="6.4912 6.4263 0.8700"/>
+	<P xyz="6.4912 4.2069 0.9216"/>
+	<P xyz="6.4912 4.2069 0.8700"/>
+	<P xyz="6.4912 6.4263 0.9216"/>
+	<P xyz="5.9004 6.4263 0.9216"/>
+	<P xyz="5.9004 4.8141 0.8700"/>
+	<P xyz="5.9004 4.8141 0.9216"/>
+	<P xyz="5.9004 6.4263 0.8700"/>
+	<P xyz="6.4912 4.2069 0.9216"/>
+	<P xyz="5.3076 4.8141 0.9216"/>
+	<P xyz="5.3076 4.2069 0.9216"/>
+	<P xyz="5.9004 4.8141 0.9216"/>
+	<P xyz="5.9004 6.4263 0.9216"/>
+	<P xyz="6.4912 6.4263 0.9216"/>
+	<P xyz="5.9004 6.4263 0.9216"/>
+	<P xyz="6.4912 6.4263 0.8700"/>
+	<P xyz="5.9004 6.4263 0.8700"/>
+	<P xyz="6.4912 6.4263 0.9216"/>
+	<P xyz="6.4912 6.4263 0.8700"/>
+	<P xyz="5.9004 4.8141 0.8700"/>
+	<P xyz="5.9004 6.4263 0.8700"/>
+	<P xyz="5.3076 4.2069 0.8700"/>
+	<P xyz="5.3076 4.8141 0.8700"/>
+	<P xyz="6.4912 4.2069 0.8700"/>
+	<P xyz="4.5142 4.8141 0.8700"/>
+	<P xyz="3.9005 4.2069 0.8700"/>
+	<P xyz="3.9005 4.8141 0.8700"/>
+	<P xyz="4.5142 4.2069 0.8700"/>
+	<P xyz="3.9005 4.8141 0.9216"/>
+	<P xyz="3.9005 4.2069 0.8700"/>
+	<P xyz="3.9005 4.2069 0.9216"/>
+	<P xyz="3.9005 4.8141 0.8700"/>
+	<P xyz="4.5142 4.2069 0.9216"/>
+	<P xyz="3.9005 4.8141 0.9216"/>
+	<P xyz="3.9005 4.2069 0.9216"/>
+	<P xyz="4.5142 4.8141 0.9216"/>
+	<P xyz="4.5142 4.8141 0.8700"/>
+	<P xyz="4.5142 4.2069 0.9216"/>
+	<P xyz="4.5142 4.2069 0.8700"/>
+	<P xyz="4.5142 4.8141 0.9216"/>
+	<P xyz="3.9005 4.8141 0.9216"/>
+	<P xyz="4.5142 4.8141 0.8700"/>
+	<P xyz="3.9005 4.8141 0.8700"/>
+	<P xyz="4.5142 4.8141 0.9216"/>
+	<P xyz="4.5142 4.2069 0.9216"/>
+	<P xyz="3.9005 4.2069 0.8700"/>
+	<P xyz="4.5142 4.2069 0.8700"/>
+	<P xyz="3.9005 4.2069 0.9216"/>
+	<P xyz="6.7873 4.2099 1.2089"/>
+	<P xyz="6.4706 6.4231 1.2089"/>
+	<P xyz="6.4706 4.2099 1.2089"/>
+	<P xyz="5.8794 6.7894 1.2089"/>
+	<P xyz="5.8794 6.4231 1.2089"/>
+	<P xyz="6.7873 6.7894 1.2089"/>
+	<P xyz="5.8794 6.7894 1.2089"/>
+	<P xyz="6.7873 6.7894 1.1581"/>
+	<P xyz="5.8794 6.7894 1.1581"/>
+	<P xyz="6.7873 6.7894 1.2089"/>
+	<P xyz="6.7873 6.7894 1.1581"/>
+	<P xyz="6.7873 4.2099 1.2089"/>
+	<P xyz="6.7873 4.2099 1.1581"/>
+	<P xyz="6.7873 6.7894 1.2089"/>
+	</Parameter>
+	<Parameter Name="Normal List" Type="Point3D List" Value="74">
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="-1.00000000 0.00000000 0.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="0.00000000 0.00000000 -1.00000000"/>
+	<P xyz="-1.00000000 -0.00000000 -0.00000000"/>
+	<P xyz="-1.00000000 -0.00000000 -0.00000000"/>
+	<P xyz="-1.00000000 -0.00000000 -0.00000000"/>
+	<P xyz="-1.00000000 -0.00000000 -0.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 -1.00000000 0.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 0.00000000 1.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="0.00000000 1.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	<P xyz="1.00000000 0.00000000 0.00000000"/>
+	</Parameter>
+	<Parameter Name="Index List" Type="Triangle Index List" Value="40">
+	<F ijk="0 1 2"/>
+	<F ijk="1 0 3"/>
+	<F ijk="4 5 6"/>
+	<F ijk="5 4 7"/>
+	<F ijk="8 9 10"/>
+	<F ijk="9 8 11"/>
+	<F ijk="12 13 14"/>
+	<F ijk="13 12 15"/>
+	<F ijk="16 17 18"/>
+	<F ijk="17 16 19"/>
+	<F ijk="20 21 22"/>
+	<F ijk="21 20 23"/>
+	<F ijk="23 20 24"/>
+	<F ijk="24 20 25"/>
+	<F ijk="26 27 28"/>
+	<F ijk="27 26 29"/>
+	<F ijk="30 31 32"/>
+	<F ijk="31 33 34"/>
+	<F ijk="33 31 35"/>
+	<F ijk="35 31 30"/>
+	<F ijk="36 37 38"/>
+	<F ijk="37 36 39"/>
+	<F ijk="40 41 42"/>
+	<F ijk="41 40 43"/>
+	<F ijk="44 45 46"/>
+	<F ijk="45 44 47"/>
+	<F ijk="48 49 50"/>
+	<F ijk="49 48 51"/>
+	<F ijk="52 53 54"/>
+	<F ijk="53 52 55"/>
+	<F ijk="56 57 58"/>
+	<F ijk="57 56 59"/>
+	<F ijk="60 61 62"/>
+	<F ijk="61 63 64"/>
+	<F ijk="63 61 65"/>
+	<F ijk="65 61 60"/>
+	<F ijk="66 67 68"/>
+	<F ijk="67 66 69"/>
+	<F ijk="70 71 72"/>
+	<F ijk="71 70 73"/>
+	</Parameter>
+	<Parameter Name="Smooth" Type="Boolean" Value="1"/>
+	<Parameter Name="AA Tolerance" Type="Real" Value="15"/>
+	</Object>
+<Object Identifier="Whitted Material" Label="Whitted Material" Name="" Type="Material">
+	<Object Identifier="./Diffuse/Weighted Texture" Label="Weighted Texture" Name="" Type="Texture">
+		<Object Identifier="Bitmap Texture" Label="Bitmap Texture" Name="" Type="Texture">
+		<Parameter Name="Filename" Type="String" Value="TX_counter/Green Marble Tiles - Tile Mask.jpg"/>
+		<Parameter Name="Projection" Type="String" Value="UV"/>
+		</Object>
+	<Parameter Name="Bitmap Texture:Weight" Type="Real" Value="1"/>
+</Object>
+	<Parameter Name="Smooth" Type="Boolean" Value="1"/>
+	<Parameter Name="Inverted" Type="Boolean" Value="0"/>
+	<Parameter Name="Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Transmitted Shininess" Type="Real" Value="128"/>
+	<Parameter Name="Index of Refraction" Type="Real" Value="2"/>
+	<Parameter Name="Specular Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Transmitted Sampling" Type="Boolean" Value="0"/>
+	<Parameter Name="Specular Attenuation" Type="String" Value="Fresnel"/>
+	<Parameter Name="Transmitted Attenuation" Type="String" Value="Fresnel"/>
+	</Object>
+	<Parameter Name="Map Channel" Type="Point2D List" Value="74">
+	<P xy="-1.3282 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="-1.3282 1.0000"/>
+	<P xy="2.5889 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="2.5889 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="-1.2967 1.0000"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="-1.2967 0.8872"/>
+	<P xy="4.8544 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="4.8544 0.8872"/>
+	<P xy="-4.8544 0.8872"/>
+	<P xy="-1.3282 1.0000"/>
+	<P xy="-1.3282 0.8872"/>
+	<P xy="-4.8544 1.0000"/>
+	<P xy="2.5889 1.0000"/>
+	<P xy="0.0000 -0.3282"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="1.2967 -0.3282"/>
+	<P xy="1.2967 -3.8544"/>
+	<P xy="2.5889 -3.8544"/>
+	<P xy="-1.2967 0.8872"/>
+	<P xy="-2.5889 1.0000"/>
+	<P xy="-1.2967 1.0000"/>
+	<P xy="-2.5889 0.8872"/>
+	<P xy="-2.5889 -3.8544"/>
+	<P xy="-1.2967 -0.3282"/>
+	<P xy="-1.2967 -3.8544"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="0.0000 -0.3282"/>
+	<P xy="-2.5889 1.0000"/>
+	<P xy="-1.3422 -0.3282"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="0.0000 -0.3282"/>
+	<P xy="-1.3422 1.0000"/>
+	<P xy="-1.3282 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="-1.3282 1.0000"/>
+	<P xy="1.3422 1.0000"/>
+	<P xy="0.0000 -0.3282"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="1.3422 -0.3282"/>
+	<P xy="1.3282 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="1.3282 0.8872"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="-1.3422 1.0000"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="-1.3422 0.8872"/>
+	<P xy="1.3422 0.8872"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="1.3422 1.0000"/>
+	<P xy="0.0000 0.8872"/>
+	<P xy="1.9858 1.0000"/>
+	<P xy="1.2930 -3.8408"/>
+	<P xy="1.2930 1.0000"/>
+	<P xy="0.0000 -4.6420"/>
+	<P xy="0.0000 -3.8408"/>
+	<P xy="1.9858 -4.6420"/>
+	<P xy="0.0000 0.8889"/>
+	<P xy="-1.9858 1.0000"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="-1.9858 0.8889"/>
+	<P xy="5.6420 1.0000"/>
+	<P xy="0.0000 0.8889"/>
+	<P xy="0.0000 1.0000"/>
+	<P xy="5.6420 0.8889"/>
+	</Parameter>
+	<Parameter Name="Frame" Type="Transform" Value="1 0 0 0 0 1 0 0 0 0 1 0"/>
+	<Parameter Name="Visible" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Caster" Type="Boolean" Value="1"/>
+	<Parameter Name="Shadow Receiver" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Transmitter" Type="Boolean" Value="1"/>
+	<Parameter Name="Caustics Receiver" Type="Boolean" Value="1"/>
+</Object>
+<Object Identifier="./Cameras/## Current View ##" Label="Pinhole Camera" Name="## Current View ##" Type="Camera">
+<Parameter Name="Focal Length" Type="Real" Value="2.0384" />
+<Parameter Name="Resolution" Type="String" Value="1655x1079"/>
+<Parameter Name="Frame" Type="Transform" Value="-0.9460 1.3936 -1.9012 10.4920
+2.3573 0.5592 -0.7630 7.6488
+-0.0000 -2.0486 -1.5016 4.4902
+"/>
+<Parameter Name="Focus Distance" Type="Real" Value="1"/>
+<Parameter Name="Projection" Type="String" Value="Planar"/>
+</Object>
+<Object Identifier="./Cameras/Scene 1" Label="Pinhole Camera" Name="Scene 1" Type="Camera">
+<Parameter Name="Focal Length" Type="Real" Value="1.9374" />
+<Parameter Name="Resolution" Type="String" Value="1655x1079"/>
+<Parameter Name="Frame" Type="Transform" Value="-0.4832 -0.4556 2.4516 3.1580
+-2.4936 0.0883 -0.4750 7.7871
+0.0000 -2.4972 -0.4641 1.8684
+"/>
+<Parameter Name="Focus Distance" Type="Real" Value="1"/>
+<Parameter Name="Projection" Type="String" Value="Planar"/>
+</Object>
+<Object Identifier="./Cameras/Scene 2" Label="Pinhole Camera" Name="Scene 2" Type="Camera">
+<Parameter Name="Focal Length" Type="Real" Value="2.0384" />
+<Parameter Name="Resolution" Type="String" Value="1655x1079"/>
+<Parameter Name="Frame" Type="Transform" Value="-1.1064 0.4695 -2.2377 10.7926
+2.2864 0.2272 -1.0828 7.7382
+0.0000 -2.4859 -0.5216 2.4236
+"/>
+<Parameter Name="Focus Distance" Type="Real" Value="1"/>
+<Parameter Name="Projection" Type="String" Value="Planar"/>
+</Object>
+<Object Identifier="./Lights/Sun" Label="Default Light" Name="Sun" Type="Light">
+<Object Identifier="Omni Light" Label="Omni Light" Name="" Type="Emittance">
+<Object Identifier="./Radiance/Constant Texture" Label="Constant Texture" Name="" Type="Texture">
+<Parameter Name="Color" Type="RGB" Value="1 1 1" />
+</Object>
+<Parameter Name="Attenuation" Type="String" Value="None"/>
+</Object>
+<Parameter Name="Enabled" Type="Boolean" Value="1"/>
+<Parameter Name="Shadow" Type="Boolean" Value="1"/>
+<Parameter Name="Soft Shadow" Type="Boolean" Value="0"/>
+<Parameter Name="Negative Light" Type="Boolean" Value="0"/>
+<Parameter Name="Global Photons" Type="Boolean" Value="1"/>
+<Parameter Name="Caustic Photons" Type="Boolean" Value="1"/>
+<Parameter Name="Multiplier" Type="Real" Value="3.0"/>
+<Parameter Name="Frame" Type="Transform" Value="1 0 0 -1975.23259936154 0 1 0 -2167.31096331199 0 0 1 1164.2292145352"/>
+<Parameter Name="Focus Distance" Type="Real" Value="4"/>
+<Parameter Name="Radius" Type="Real" Value="0.2"/>
+<Parameter Name="Shadow Color" Type="RGB" Value="0 0 0"/>
+</Object>
+<Parameter Name="./Cameras/Active" Type="String" Value="## Current View ##"/>
+</Object>
+</Root>
